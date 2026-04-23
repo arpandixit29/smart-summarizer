@@ -15,8 +15,10 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
-    credentials: true,
+    origin: [
+      "http://localhost:5173",
+      "https://smart-summarizer.vercel.app",
+    ],
   })
 );
 app.use(express.json({ limit: "2mb" }));
