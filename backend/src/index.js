@@ -15,20 +15,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: (requestOrigin, callback) => {
-      const allowedOrigins = new Set([
-        process.env.CLIENT_ORIGIN || "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:5173",
-      ]);
-
-      if (!requestOrigin || allowedOrigins.has(requestOrigin)) {
-        callback(null, true);
-        return;
-      }
-
-      callback(new Error(`CORS blocked origin: ${requestOrigin}`));
-    },
+    origin: ["http://localhost:5173"],
+    credentials: true,
   })
 );
 app.use(express.json({ limit: "2mb" }));
